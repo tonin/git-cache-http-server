@@ -1,5 +1,5 @@
 A caching Git HTTP server
-============================
+=========================
 
 Mirror remote repositories and serve them over HTTP, automatically updating
 them as needed.
@@ -33,7 +33,7 @@ git clone http://localhost:1234/github.com/jonasmalacofilho/git-cache-http-serve
 
 If you run your git-cache on a dedicated server or container (i.e. named gitcache), you can then also configure git to always use your cache like in the following example (don't use this configuration on the git-cache machine itself):.
 ```
-git config --global url."http://gitcache:1234/".insteadOf https:// && \
+git config --global url."http://gitcache:1234/".insteadOf https://
 ```
 
 # Installing
@@ -64,6 +64,24 @@ Requirements: `haxe` and [`hmm`](https://github.com/andywhite37/hmm).  If you pr
 hmm install
 haxe build.hxml
 ```
+
+# Docker image
+
+A Dockerfile is provided for you to build and run the git-cache-http-server application in a container. Debian is used inside this container.
+
+To build the docker image, you just need to run the following:
+
+```
+docker build -t mylocal:git-cache .
+```
+
+Then, to run the image just built, you do:
+
+```
+docker run --name git-cache-1234 -d -p 1234:1234 mylocal:git-cache
+```
+
+Further runs need only to ```start``` the existing container so that the cache content is preserved (and will be updated).
 
 # Implementation
 

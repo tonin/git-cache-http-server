@@ -187,7 +187,7 @@ Main.handleRequest = function(req,res) {
 	}
 };
 Main.main = function() {
-	var options = js_npm_Docopt.docopt(Main.usage,{ version : "0.0.1-alpha"});
+	var options = js_npm_Docopt.docopt(Main.usage,{ version : "0.0.2-alpha"});
 	Main.cacheDir = options["--cache-dir"];
 	Main.listenPort = Std.parseInt(options["--port"]);
 	if(Main.listenPort == null || Main.listenPort < 1 || Main.listenPort > 65535) {
